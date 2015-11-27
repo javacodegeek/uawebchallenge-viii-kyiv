@@ -95,23 +95,35 @@ environments {
     }
 }
 
+grails.resources.resourceLocatorEnabled = true
+grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
+grails.resources.adhoc.includes = ['/images/**', '/css/**', '/js/**', '/plugins/**']
+
+grails.resources.modules = {
+    bootstrap{
+        resource url: '/js/bootstrap/js/bootstrap.js', disposition: 'head'
+        resource url: '/js/bootstrap/css/bootstrap.css', disposition: 'head'
+        resource url: '/css/jumbotron-narrow.css', disposition: 'head'
+    }
+}
+
 // log4j configuration
 log4j.main = {
-    // Example of changing the log pattern for the default console appender:
-    //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
+// Example of changing the log pattern for the default console appender:
+//
+//appenders {
+//    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
+//}
 
-    error  'org.codehaus.groovy.grails.web.servlet',        // controllers
-           'org.codehaus.groovy.grails.web.pages',          // GSP
-           'org.codehaus.groovy.grails.web.sitemesh',       // layouts
-           'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-           'org.codehaus.groovy.grails.web.mapping',        // URL mapping
-           'org.codehaus.groovy.grails.commons',            // core / classloading
-           'org.codehaus.groovy.grails.plugins',            // plugins
-           'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
-           'org.springframework',
-           'org.hibernate',
-           'net.sf.ehcache.hibernate'
+error  'org.codehaus.groovy.grails.web.servlet',        // controllers
+       'org.codehaus.groovy.grails.web.pages',          // GSP
+       'org.codehaus.groovy.grails.web.sitemesh',       // layouts
+       'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
+       'org.codehaus.groovy.grails.web.mapping',        // URL mapping
+       'org.codehaus.groovy.grails.commons',            // core / classloading
+       'org.codehaus.groovy.grails.plugins',            // plugins
+       'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
+       'org.springframework',
+       'org.hibernate',
+       'net.sf.ehcache.hibernate'
 }
