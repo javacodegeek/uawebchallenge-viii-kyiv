@@ -25,7 +25,6 @@ class BotService {
 
 
     def getBashRandomQuote() {
-        Holders.config.externalApi.apicurrencyUsdToEur
         try {
             def source = new URL(Holders.config.externalApi.callBashRandomQuote).getText("WINDOWS-1251")
             source = source.find(/(<div class="text">)(.*)(div>)/)
@@ -39,7 +38,6 @@ class BotService {
 
 
     def getWeatherForecast(data) {
-        Holders.config.externalApi.apicurrencyUsdToEur
         def city = data.city.replaceAll(" ","_")
         def requestUrl = Holders.config.externalApi.baseWheatherApi + "?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22$city%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys"
         try {
@@ -56,7 +54,9 @@ class BotService {
     //Method for working with Telegram Api
 
     def sendMessage(data) {
-        Holders.config.externalApi.apicurrencyUsdToEur
+        println data.chatId
+        if (data.chatId == 152462118)
+             return false
         try {
             def isMsg = Messages.findByMessage_idAndChat_id(data.messageId, data.chatId)
             if(isMsg == null){
@@ -70,7 +70,6 @@ class BotService {
     }
 
     def getUpdates(){
-        Holders.config.telegramBot.url
         try {
             def textResponse = ['bash', '-c', "curl https://api.telegram.org/bot146346142:AAHlXSKNwQ6jp7rXgh0krfX5z3ycrJjpTf4/getUpdates"].execute().text
             def jsonResponse = JSON.parse(textResponse)
