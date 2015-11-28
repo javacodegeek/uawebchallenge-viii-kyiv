@@ -99,6 +99,41 @@ grails.resources.resourceLocatorEnabled = true
 grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
 grails.resources.adhoc.includes = ['/images/**', '/css/**', '/js/**', '/plugins/**']
 
+externalApi {
+    callCurrencyUsdToEur = "https://currency-api.appspot.com/api/USD/EUR.json"
+    callBashRandomQuote = "http://bash.im/random"
+    baseWheatherApi = "https://query.yahooapis.com/v1/public/yql"
+}
+
+telegramBot {
+    baseUrl = "api.telegram.org/bot146346142:AAHlXSKNwQ6jp7rXgh0krfX5z3ycrJjpTf4/"
+    token = "146346142:AAHlXSKNwQ6jp7rXgh0krfX5z3ycrJjpTf4"
+    megaMozkCommands {
+        start {
+            text = "/start"
+            description = "This command show hello message to you bro!  No case sensitive"
+        }
+        help {
+            text = "/help"
+            description = "This command show list of command which you can use for play with me!  No case sensitive"
+        }
+
+        weatherForecast {
+            text = "weather {your_city}"
+            description = "This command show weather forecast in yor city from yahoo wheather api. No case sensitive"
+        }
+        exchangeRate {
+            text = "exchangerate"
+            description = "This command show exchange rate USD/EUR  from currency-api.appspot.com! No case sensitive"
+        }
+        bashIm {
+            text = "bash"
+            description = "This more important command show random message from bash.im! No case sensitive"
+        }
+    }
+}
+
+
 grails.resources.modules = {
     bootstrap{
         resource url: '/js/bootstrap/js/bootstrap.js', disposition: 'head'

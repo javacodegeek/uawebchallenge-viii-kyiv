@@ -10,5 +10,8 @@ class UrlMappings {
         "/"(view:"/index")
         "/default"(view:"/default")
         "500"(view:'/error')
+        "/test"(controller: "bot", action: "test")
+        "/bot/commands"(controller: "bot", action: "getAvailableCommands")
+        "/bot/updates"(controller: "bot", action: "getUpdates")
 	}
 }

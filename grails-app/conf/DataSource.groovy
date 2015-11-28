@@ -16,25 +16,27 @@ hibernate {
 
 // environment specific settings
 environments {
-    dataSource {
-        driverClassName = "org.postgresql.Driver"
-        dialect = "org.hibernate.dialect.PostgreSQLDialect"
-        pooled = true
-        type = "com.mchange.v2.c3p0.ComboPooledDataSource"
-        properties {
-            maxActive = -1
-            minEvictableIdleTimeMillis=1800000
-            timeBetweenEvictionRunsMillis=1800000
-            numTestsPerEvictionRun=3
-            testOnBorrow=true
-            testWhileIdle=true
-            testOnReturn=true
-            validationQuery="SELECT 1"
+    development {
+        dataSource {
+            driverClassName = "org.postgresql.Driver"
+            dialect = "org.hibernate.dialect.PostgreSQLDialect"
+            pooled = true
+            type = "com.mchange.v2.c3p0.ComboPooledDataSource"
+            properties {
+                maxActive = -1
+                minEvictableIdleTimeMillis = 1800000
+                timeBetweenEvictionRunsMillis = 1800000
+                numTestsPerEvictionRun = 3
+                testOnBorrow = true
+                testWhileIdle = true
+                testOnReturn = true
+                validationQuery = "SELECT 1"
+            }
+            username = 'postgres'
+            password = '123'
+            url = "jdbc:postgresql://localhost:5432/uwcuafinal"
+            dbCreate = "create-drop"
         }
-        username = 'postgres'
-        password = '123'
-        url = "jdbc:postgresql://localhost:5432/uwcuafinal"
-        dbCreate = "create-drop"
     }
     test {
         dataSource {
